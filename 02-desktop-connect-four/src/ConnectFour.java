@@ -46,7 +46,7 @@ public class ConnectFour extends JFrame {
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cols; j++) {
                     buttons[i][j].setText(" ");
-                    buttons[i][j].setBackground(new Color(180, 240 /*- 30 * ((i + j) % 2)*/, 180));
+                    buttons[i][j].setBackground(new Color(180, 240, 180));
                 }
             }
             currentPlayerSign = 'X';
@@ -62,9 +62,8 @@ public class ConnectFour extends JFrame {
                 buttons[i][j].setName("Button" + (char)(65+j) + (rows-i));
                 buttons[i][j].setText(" ");
                 buttons[i][j].setFocusPainted(false);
-                buttons[i][j].setBackground(new Color(180, 240-30*((i+j)%2), 180));
+                buttons[i][j].setBackground(new Color(180, 240, 180));
                 buttons[i][j].setMargin(new Insets(10, 10, 10, 10));
-                //buttons[i][j].setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
                 board.add(buttons[i][j]);
             }
         }
@@ -77,7 +76,6 @@ public class ConnectFour extends JFrame {
                 int finalJ = j;
                 buttons[i][j].addActionListener(_ -> {
                     if (buttons[finalI][finalJ].getText().equals(" ") && !won) {
-                        //System.out.println("Field " + buttons[finalI][finalJ].getName() + "  is empty. Changing value to " + currentPlayerSign);
                         int emptyI = getFirstEmptyRow(finalJ);
                         if (emptyI != -1) {
                             buttons[emptyI][finalJ].setText(String.valueOf(currentPlayerSign));
