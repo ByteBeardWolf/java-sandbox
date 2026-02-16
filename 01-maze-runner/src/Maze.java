@@ -7,6 +7,7 @@ import java.util.Random;
 public class Maze {
     private static final String WALL = "\u2588\u2588"; //1
     private static final String PASSAGE = "  "; //0
+    private static final String PATH = "//"; //2
     private static final int[][] directions = {{2, 0}, {-2, 0}, {0, 2}, {0, -2}};
     private final int height, width;
     private int[][] matrix;
@@ -102,7 +103,7 @@ public class Maze {
         StringBuilder sb = new StringBuilder();
         for (int[] row : matrix) {
             for (int cell : row) {
-                sb.append(cell == 1 ? WALL : PASSAGE);
+                sb.append(cell == 1 ? WALL : (cell == 0 ? PASSAGE : PATH));
             }
             sb.append("\n");
         }

@@ -18,9 +18,11 @@ public class GameState{
         if(mazeReady) {
             availableOptions.add(3);
             availableOptions.add(4);
+            availableOptions.add(5);
         } else {
             availableOptions.remove(3);
             availableOptions.remove(4);
+            availableOptions.remove(5);
         }
 
         return availableOptions.contains(selectedOption);
