@@ -11,6 +11,11 @@ public class Account {
         this.balance = 0;
     }
 
+    public static boolean isCorrectCardNumber(Long cardNumber) {
+        Long correctNumber = Account.addChecksum(cardNumber/10);
+        return cardNumber.equals(correctNumber);
+    }
+
     public long getCardNumber() {
         return cardNumber;
     }
@@ -19,7 +24,11 @@ public class Account {
         this.cardNumber = addChecksum(cardNumber);
     }
 
-    private long addChecksum(long cardNumber) {
+    public void setCardNumberDirect(long cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public static long addChecksum(long cardNumber) {
         String cardNumberStr = String.valueOf(cardNumber);
         int sum = 0;
         for (int i = 0; i < 15; i++) {
